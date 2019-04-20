@@ -1,0 +1,15 @@
+name: vma
+version: 0.1.0
+
+description: VulkanMemoryAllocator bindings to Crystal.
+
+authors:
+  - Malte Voos <voos.malte@gmail.com>
+
+crystal: 0.28.0
+
+license: MIT
+
+dependencies:
+  vulkan:
+    github: malte-v/vulkan.cr
