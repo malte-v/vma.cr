@@ -52,47 +52,47 @@ lib Vma
     MaxEnum  = 2147483647
   end
 
-  fun create_allocator = vmaCreateAllocator(p_create_info : AllocatorCreateInfo*, p_allocator : Allocator*) : Vk::Result
+  fun create_allocator = vmaCreateAllocator(create_info : AllocatorCreateInfo*, allocator : Allocator*) : Vk::Result
   fun destroy_allocator = vmaDestroyAllocator(allocator : Allocator)
-  fun get_physical_device_properties = vmaGetPhysicalDeviceProperties(allocator : Allocator, pp_physical_device_properties : Vk::PhysicalDeviceProperties**)
-  fun get_memory_properties = vmaGetMemoryProperties(allocator : Allocator, pp_physical_device_memory_properties : Vk::PhysicalDeviceMemoryProperties**)
-  fun get_memory_type_properties = vmaGetMemoryTypeProperties(allocator : Allocator, memory_type_index : UInt32, p_flags : Vk::MemoryPropertyFlags*)
+  fun get_physical_device_properties = vmaGetPhysicalDeviceProperties(allocator : Allocator, physical_device_properties : Vk::PhysicalDeviceProperties**)
+  fun get_memory_properties = vmaGetMemoryProperties(allocator : Allocator, physical_device_memory_properties : Vk::PhysicalDeviceMemoryProperties**)
+  fun get_memory_type_properties = vmaGetMemoryTypeProperties(allocator : Allocator, memory_type_index : UInt32, flags : Vk::MemoryPropertyFlags*)
   fun set_current_frame_index = vmaSetCurrentFrameIndex(allocator : Allocator, frame_index : UInt32)
-  fun calculate_stats = vmaCalculateStats(allocator : Allocator, p_stats : Stats*)
-  fun build_stats_string = vmaBuildStatsString(allocator : Allocator, pp_stats_string : LibC::Char**, detailed_map : Vk::Bool32)
-  fun free_stats_string = vmaFreeStatsString(allocator : Allocator, p_stats_string : LibC::Char*)
-  fun find_memory_type_index = vmaFindMemoryTypeIndex(allocator : Allocator, memory_type_bits : UInt32, p_allocation_create_info : AllocationCreateInfo*, p_memory_type_index : UInt32*) : Vk::Result
-  fun find_memory_type_index_for_buffer_info = vmaFindMemoryTypeIndexForBufferInfo(allocator : Allocator, p_buffer_create_info : Vk::BufferCreateInfo*, p_allocation_create_info : AllocationCreateInfo*, p_memory_type_index : UInt32*) : Vk::Result
-  fun find_memory_type_index_for_image_info = vmaFindMemoryTypeIndexForImageInfo(allocator : Allocator, p_image_create_info : Vk::ImageCreateInfo*, p_allocation_create_info : AllocationCreateInfo*, p_memory_type_index : UInt32*) : Vk::Result
-  fun create_pool = vmaCreatePool(allocator : Allocator, p_create_info : PoolCreateInfo*, p_pool : Pool*) : Vk::Result
+  fun calculate_stats = vmaCalculateStats(allocator : Allocator, stats : Stats*)
+  fun build_stats_string = vmaBuildStatsString(allocator : Allocator, stats_string : LibC::Char**, detailed_map : Vk::Bool32)
+  fun free_stats_string = vmaFreeStatsString(allocator : Allocator, stats_string : LibC::Char*)
+  fun find_memory_type_index = vmaFindMemoryTypeIndex(allocator : Allocator, memory_type_bits : UInt32, allocation_create_info : AllocationCreateInfo*, memory_type_index : UInt32*) : Vk::Result
+  fun find_memory_type_index_for_buffer_info = vmaFindMemoryTypeIndexForBufferInfo(allocator : Allocator, buffer_create_info : Vk::BufferCreateInfo*, allocation_create_info : AllocationCreateInfo*, memory_type_index : UInt32*) : Vk::Result
+  fun find_memory_type_index_for_image_info = vmaFindMemoryTypeIndexForImageInfo(allocator : Allocator, image_create_info : Vk::ImageCreateInfo*, allocation_create_info : AllocationCreateInfo*, memory_type_index : UInt32*) : Vk::Result
+  fun create_pool = vmaCreatePool(allocator : Allocator, create_info : PoolCreateInfo*, pool : Pool*) : Vk::Result
   fun destroy_pool = vmaDestroyPool(allocator : Allocator, pool : Pool)
-  fun get_pool_stats = vmaGetPoolStats(allocator : Allocator, pool : Pool, p_pool_stats : PoolStats*)
-  fun make_pool_allocations_lost = vmaMakePoolAllocationsLost(allocator : Allocator, pool : Pool, p_lost_allocation_count : LibC::SizeT*)
+  fun get_pool_stats = vmaGetPoolStats(allocator : Allocator, pool : Pool, pool_stats : PoolStats*)
+  fun make_pool_allocations_lost = vmaMakePoolAllocationsLost(allocator : Allocator, pool : Pool, lost_allocation_count : LibC::SizeT*)
   fun check_pool_corruption = vmaCheckPoolCorruption(allocator : Allocator, pool : Pool) : Vk::Result
-  fun allocate_memory = vmaAllocateMemory(allocator : Allocator, p_vk_memory_requirements : Vk::MemoryRequirements*, p_create_info : AllocationCreateInfo*, p_allocation : Allocation*, p_allocation_info : AllocationInfo*) : Vk::Result
-  fun allocate_memory_pages = vmaAllocateMemoryPages(allocator : Allocator, p_vk_memory_requirements : Vk::MemoryRequirements*, p_create_info : AllocationCreateInfo*, allocation_count : LibC::SizeT, p_allocations : Allocation*, p_allocation_info : AllocationInfo*) : Vk::Result
-  fun allocate_memory_for_buffer = vmaAllocateMemoryForBuffer(allocator : Allocator, buffer : Vk::Buffer, p_create_info : AllocationCreateInfo*, p_allocation : Allocation*, p_allocation_info : AllocationInfo*) : Vk::Result
-  fun allocate_memory_for_image = vmaAllocateMemoryForImage(allocator : Allocator, image : Vk::Image, p_create_info : AllocationCreateInfo*, p_allocation : Allocation*, p_allocation_info : AllocationInfo*) : Vk::Result
+  fun allocate_memory = vmaAllocateMemory(allocator : Allocator, memory_requirements : Vk::MemoryRequirements*, create_info : AllocationCreateInfo*, allocation : Allocation*, allocation_info : AllocationInfo*) : Vk::Result
+  fun allocate_memory_pages = vmaAllocateMemoryPages(allocator : Allocator, memory_requirements : Vk::MemoryRequirements*, create_info : AllocationCreateInfo*, allocation_count : LibC::SizeT, allocations : Allocation*, allocation_info : AllocationInfo*) : Vk::Result
+  fun allocate_memory_for_buffer = vmaAllocateMemoryForBuffer(allocator : Allocator, buffer : Vk::Buffer, create_info : AllocationCreateInfo*, allocation : Allocation*, allocation_info : AllocationInfo*) : Vk::Result
+  fun allocate_memory_for_image = vmaAllocateMemoryForImage(allocator : Allocator, image : Vk::Image, create_info : AllocationCreateInfo*, allocation : Allocation*, allocation_info : AllocationInfo*) : Vk::Result
   fun free_memory = vmaFreeMemory(allocator : Allocator, allocation : Allocation)
-  fun free_memory_pages = vmaFreeMemoryPages(allocator : Allocator, allocation_count : LibC::SizeT, p_allocations : Allocation*)
+  fun free_memory_pages = vmaFreeMemoryPages(allocator : Allocator, allocation_count : LibC::SizeT, allocations : Allocation*)
   fun resize_allocation = vmaResizeAllocation(allocator : Allocator, allocation : Allocation, new_size : Vk::DeviceSize) : Vk::Result
-  fun get_allocation_info = vmaGetAllocationInfo(allocator : Allocator, allocation : Allocation, p_allocation_info : AllocationInfo*)
+  fun get_allocation_info = vmaGetAllocationInfo(allocator : Allocator, allocation : Allocation, allocation_info : AllocationInfo*)
   fun touch_allocation = vmaTouchAllocation(allocator : Allocator, allocation : Allocation) : Vk::Bool32
-  fun set_allocation_user_data = vmaSetAllocationUserData(allocator : Allocator, allocation : Allocation, p_user_data : Void*)
-  fun create_lost_allocation = vmaCreateLostAllocation(allocator : Allocator, p_allocation : Allocation*)
-  fun map_memory = vmaMapMemory(allocator : Allocator, allocation : Allocation, pp_data : Void**) : Vk::Result
+  fun set_allocation_user_data = vmaSetAllocationUserData(allocator : Allocator, allocation : Allocation, user_data : Void*)
+  fun create_lost_allocation = vmaCreateLostAllocation(allocator : Allocator, allocation : Allocation*)
+  fun map_memory = vmaMapMemory(allocator : Allocator, allocation : Allocation, data : Void**) : Vk::Result
   fun unmap_memory = vmaUnmapMemory(allocator : Allocator, allocation : Allocation)
   fun flush_allocation = vmaFlushAllocation(allocator : Allocator, allocation : Allocation, offset : Vk::DeviceSize, size : Vk::DeviceSize)
   fun invalidate_allocation = vmaInvalidateAllocation(allocator : Allocator, allocation : Allocation, offset : Vk::DeviceSize, size : Vk::DeviceSize)
   fun check_corruption = vmaCheckCorruption(allocator : Allocator, memory_type_bits : UInt32) : Vk::Result
-  fun defragmentation_begin = vmaDefragmentationBegin(allocator : Allocator, p_info : DefragmentationInfo2*, p_stats : DefragmentationStats*, p_context : DefragmentationContext*) : Vk::Result
+  fun defragmentation_begin = vmaDefragmentationBegin(allocator : Allocator, info : DefragmentationInfo2*, stats : DefragmentationStats*, context : DefragmentationContext*) : Vk::Result
   fun defragmentation_end = vmaDefragmentationEnd(allocator : Allocator, context : DefragmentationContext) : Vk::Result
-  fun defragment = vmaDefragment(allocator : Allocator, p_allocations : Allocation*, allocation_count : LibC::SizeT, p_allocations_changed : Vk::Bool32*, p_defragmentation_info : DefragmentationInfo*, p_defragmentation_stats : DefragmentationStats*) : Vk::Result
+  fun defragment = vmaDefragment(allocator : Allocator, allocations : Allocation*, allocation_count : LibC::SizeT, allocations_changed : Vk::Bool32*, defragmentation_info : DefragmentationInfo*, defragmentation_stats : DefragmentationStats*) : Vk::Result
   fun bind_buffer_memory = vmaBindBufferMemory(allocator : Allocator, allocation : Allocation, buffer : Vk::Buffer) : Vk::Result
   fun bind_image_memory = vmaBindImageMemory(allocator : Allocator, allocation : Allocation, image : Vk::Image) : Vk::Result
-  fun create_buffer = vmaCreateBuffer(allocator : Allocator, p_buffer_create_info : Vk::BufferCreateInfo*, p_allocation_create_info : AllocationCreateInfo*, p_buffer : Vk::Buffer*, p_allocation : Allocation*, p_allocation_info : AllocationInfo*) : Vk::Result
+  fun create_buffer = vmaCreateBuffer(allocator : Allocator, buffer_create_info : Vk::BufferCreateInfo*, allocation_create_info : AllocationCreateInfo*, buffer : Vk::Buffer*, allocation : Allocation*, allocation_info : AllocationInfo*) : Vk::Result
   fun destroy_buffer = vmaDestroyBuffer(allocator : Allocator, buffer : Vk::Buffer, allocation : Allocation)
-  fun create_image = vmaCreateImage(allocator : Allocator, p_image_create_info : Vk::ImageCreateInfo*, p_allocation_create_info : AllocationCreateInfo*, p_image : Vk::Image*, p_allocation : Allocation*, p_allocation_info : AllocationInfo*) : Vk::Result
+  fun create_image = vmaCreateImage(allocator : Allocator, image_create_info : Vk::ImageCreateInfo*, allocation_create_info : AllocationCreateInfo*, image : Vk::Image*, allocation : Allocation*, allocation_info : AllocationInfo*) : Vk::Result
   fun destroy_image = vmaDestroyImage(allocator : Allocator, image : Vk::Image, allocation : Allocation)
 
   struct DeviceMemoryCallbacks
@@ -101,30 +101,30 @@ lib Vma
   end
 
   struct VulkanFunctions
-    vk_get_physical_device_properties : PfnVkGetPhysicalDeviceProperties
-    vk_get_physical_device_memory_properties : PfnVkGetPhysicalDeviceMemoryProperties
-    vk_allocate_memory : PfnVkAllocateMemory
-    vk_free_memory : PfnVkFreeMemory
-    vk_map_memory : PfnVkMapMemory
-    vk_unmap_memory : PfnVkUnmapMemory
-    vk_flush_mapped_memory_ranges : PfnVkFlushMappedMemoryRanges
-    vk_invalidate_mapped_memory_ranges : PfnVkInvalidateMappedMemoryRanges
-    vk_bind_buffer_memory : PfnVkBindBufferMemory
-    vk_bind_image_memory : PfnVkBindImageMemory
-    vk_get_buffer_memory_requirements : PfnVkGetBufferMemoryRequirements
-    vk_get_image_memory_requirements : PfnVkGetImageMemoryRequirements
-    vk_create_buffer : PfnVkCreateBuffer
-    vk_destroy_buffer : PfnVkDestroyBuffer
-    vk_create_image : PfnVkCreateImage
-    vk_destroy_image : PfnVkDestroyImage
-    vk_cmd_copy_buffer : PfnVkCmdCopyBuffer
-    vk_get_buffer_memory_requirements2_khr : PfnVkGetBufferMemoryRequirements2KHR
-    vk_get_image_memory_requirements2_khr : PfnVkGetImageMemoryRequirements2KHR
+    get_physical_device_properties : PfnVkGetPhysicalDeviceProperties
+    get_physical_device_memory_properties : PfnVkGetPhysicalDeviceMemoryProperties
+    allocate_memory : PfnVkAllocateMemory
+    free_memory : PfnVkFreeMemory
+    map_memory : PfnVkMapMemory
+    unmap_memory : PfnVkUnmapMemory
+    flush_mapped_memory_ranges : PfnVkFlushMappedMemoryRanges
+    invalidate_mapped_memory_ranges : PfnVkInvalidateMappedMemoryRanges
+    bind_buffer_memory : PfnVkBindBufferMemory
+    bind_image_memory : PfnVkBindImageMemory
+    get_buffer_memory_requirements : PfnVkGetBufferMemoryRequirements
+    get_image_memory_requirements : PfnVkGetImageMemoryRequirements
+    create_buffer : PfnVkCreateBuffer
+    destroy_buffer : PfnVkDestroyBuffer
+    create_image : PfnVkCreateImage
+    destroy_image : PfnVkDestroyImage
+    cmd_copy_buffer : PfnVkCmdCopyBuffer
+    get_buffer_memory_requirements2_khr : PfnVkGetBufferMemoryRequirements2KHR
+    get_image_memory_requirements2_khr : PfnVkGetImageMemoryRequirements2KHR
   end
 
   struct RecordSettings
     flags : RecordFlags
-    p_file_path : LibC::Char*
+    file_path : LibC::Char*
   end
 
   struct AllocatorCreateInfo
@@ -132,12 +132,12 @@ lib Vma
     physical_device : Vk::PhysicalDevice
     device : Vk::Device
     preferred_large_heap_block_size : Vk::DeviceSize
-    p_allocation_callbacks : Vk::AllocationCallbacks*
-    p_device_memory_callbacks : DeviceMemoryCallbacks*
+    allocation_callbacks : Vk::AllocationCallbacks*
+    device_memory_callbacks : DeviceMemoryCallbacks*
     frame_in_use_count : UInt32
-    p_heap_size_limit : Vk::DeviceSize*
-    p_vulkan_functions : VulkanFunctions*
-    p_record_settings : RecordSettings*
+    heap_size_limit : Vk::DeviceSize*
+    vulkan_functions : VulkanFunctions*
+    record_settings : RecordSettings*
   end
 
   struct StatInfo
@@ -167,7 +167,7 @@ lib Vma
     preferred_flags : Vk::MemoryPropertyFlags
     memory_type_bits : UInt32
     pool : Pool
-    p_user_data : Void*
+    user_data : Void*
   end
 
   struct PoolCreateInfo
@@ -193,17 +193,17 @@ lib Vma
     device_memory : Vk::DeviceMemory
     offset : Vk::DeviceSize
     size : Vk::DeviceSize
-    p_mapped_data : Void*
-    p_user_data : Void*
+    mapped_data : Void*
+    user_data : Void*
   end
 
   struct DefragmentationInfo2
     flags : DefragmentationFlags
     allocation_count : UInt32
-    p_allocations : Allocation*
-    p_allocations_changed : Vk::Bool32*
+    allocations : Allocation*
+    allocations_changed : Vk::Bool32*
     pool_count : UInt32
-    p_pools : Pool*
+    pools : Pool*
     max_cpu_bytes_to_move : Vk::DeviceSize
     max_cpu_allocations_to_move : UInt32
     max_gpu_bytes_to_move : Vk::DeviceSize
